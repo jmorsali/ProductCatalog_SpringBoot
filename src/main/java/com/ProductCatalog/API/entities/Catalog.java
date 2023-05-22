@@ -12,8 +12,13 @@ public class Catalog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer catalogId;
-    @ManyToMany(cascade=CascadeType.ALL,fetch= FetchType.EAGER,mappedBy = "catalog")
+    String catalogName;
+    @ManyToMany
+    @JoinTable(name = "product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Product> products = new ArrayList<>();
+
     public List<Product> getProducts() {
         return products;
     }
@@ -29,4 +34,13 @@ public class Catalog {
     public void setCatalogId(Integer catalogId) {
         this.catalogId = catalogId;
     }
+
+    public String getCatalogName() {
+        return catalogName;
+    }
+
+    public void setCatalogName(String catalogName) {
+        this.catalogName = catalogName;
+    }
+
 }

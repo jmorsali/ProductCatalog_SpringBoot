@@ -4,15 +4,17 @@ import com.ProductCatalog.API.dtos.ProductDto;
 import com.ProductCatalog.API.entities.Product;
 import com.ProductCatalog.API.services.IProductService;
 import com.ProductCatalog.API.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("api/v1/products")
 public class ProductController {
     private final IProductService productService;
 
+    @Autowired
     public ProductController(IProductService productService) {
         this.productService = productService;
     }

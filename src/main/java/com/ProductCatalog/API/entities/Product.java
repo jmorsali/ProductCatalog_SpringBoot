@@ -24,8 +24,8 @@ public class Product {
     @Transient
     private String productCode;
 
-    @ManyToMany(cascade=CascadeType.ALL,fetch= FetchType.EAGER,mappedBy = "product")
-    private List<Catalog> catalogs = new ArrayList<>();
+    @ManyToMany(mappedBy = "products")
+    private final List<Catalog> catalogs = new ArrayList<>();
 
     public Product() {
     }
