@@ -1,11 +1,22 @@
 package com.ProductCatalog.API.dtos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CatalogDto {
 
     Integer catalogId;
-    List<ProductDto> products;
+    String catalogName;
+
+    public String getCatalogName() {
+        return catalogName;
+    }
+
+    public void setCatalogName(String catalogName) {
+        this.catalogName = catalogName;
+    }
+
+    List<ProductDto> products=new ArrayList<>();
 
     public Integer getCatalogId() {
         return catalogId;

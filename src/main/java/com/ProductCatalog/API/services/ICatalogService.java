@@ -1,11 +1,19 @@
 package com.ProductCatalog.API.services;
 
+import com.ProductCatalog.API.dtos.CatalogDto;
 import com.ProductCatalog.API.dtos.requests.CatalogSearchRequest;
 import com.ProductCatalog.API.dtos.response.CatalogResponse;
 import com.ProductCatalog.API.dtos.response.CatalogsResponse;
 
-public interface ICatalogService {
-    CatalogsResponse getAll(CatalogSearchRequest request);
+import java.util.List;
 
-    CatalogResponse getById(long id);
+public interface ICatalogService {
+
+    List<CatalogDto> getAllCatalog();
+
+    List<CatalogDto> searchCatalog(CatalogSearchRequest request);
+
+    CatalogDto getCatalogById(Long id);
+
+    CatalogDto createCatalog(CatalogDto catalog);
 }

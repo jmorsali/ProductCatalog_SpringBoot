@@ -13,7 +13,7 @@ public class Catalog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer catalogId;
     String catalogName;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "product_category",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))

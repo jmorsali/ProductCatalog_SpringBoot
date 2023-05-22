@@ -27,6 +27,10 @@ public class Product {
     @ManyToMany(mappedBy = "products")
     private final List<Catalog> catalogs = new ArrayList<>();
 
+    public List<Catalog> getCatalogs() {
+        return catalogs;
+    }
+
     public Product() {
     }
 

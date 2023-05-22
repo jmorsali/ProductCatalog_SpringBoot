@@ -1,15 +1,13 @@
 package com.ProductCatalog.API.controller;
 
+import com.ProductCatalog.API.dtos.CatalogDto;
 import com.ProductCatalog.API.dtos.requests.CatalogSearchRequest;
 import com.ProductCatalog.API.dtos.response.CatalogResponse;
 import com.ProductCatalog.API.dtos.response.CatalogsResponse;
 import com.ProductCatalog.API.services.ICatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/catalog")
@@ -23,14 +21,26 @@ public class CatalogController {
     }
 
     @PostMapping("search")
-    public ResponseEntity<CatalogsResponse> searchCatalog(CatalogSearchRequest request){
-      var catalogs=  catalogService.getAll(request);
-      return ResponseEntity.ok(catalogs);
+    public ResponseEntity<CatalogsResponse> searchCatalog(@RequestBody CatalogSearchRequest request) {
+        var catalogs = catalogService.searchCatalog(request);
+        var response = new CatalogsResponse();
+        response.setCatalogs(catalogs);
+        return ResponseEntity.ok(response );
     }
 
     @PostMapping("{Id}")
-    public ResponseEntity<CatalogResponse> getCatalog(@PathVariable long Id){
-        var catalogs=  catalogService.getById(Id);
-        return ResponseEntity.ok(catalogs);
+    public ResponseEntity<CatalogResponse> getCatalog(@PathVariable long Id) {
+        var catalog = catalogService.getCatalogById(Id);
+        var response = new CatalogResponse();
+        response.setCatalog(catalog);
+        return ResponseEntity.ok(response );
+    }
+
+    @PostMapping("create")
+    public ResponseEntity<CatalogResponse> createCatalog(@RequestBody CatalogDto catalog) {
+        catalog = catalogService.createCatalog(catalog);
+        var response = new CatalogResponse();
+        response.setCatalog(catalog);
+        return ResponseEntity.ok(response);
     }
 }

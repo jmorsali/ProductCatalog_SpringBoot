@@ -29,7 +29,7 @@ public class ProductController {
         return productService.getProductById(id);
     }
 
-    @PostMapping
+    @PostMapping("create")
     public ProductDto createProduct(@RequestBody ProductDto product) {
         return productService.createProduct(product);
     }

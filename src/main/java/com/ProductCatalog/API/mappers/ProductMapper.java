@@ -1,5 +1,6 @@
 package com.ProductCatalog.API.mappers;
 
+import com.ProductCatalog.API.dtos.CatalogDto;
 import com.ProductCatalog.API.dtos.ProductDto;
 import com.ProductCatalog.API.entities.Product;
 
@@ -34,4 +35,5 @@ public class ProductMapper {
         }
         return productDtoList;
     }
+
 }
