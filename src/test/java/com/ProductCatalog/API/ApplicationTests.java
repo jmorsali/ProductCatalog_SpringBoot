@@ -1,4 +1,4 @@
-package com.ProductCatalog.ProductCatalog.API;
+package com.ProductCatalog.API;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
