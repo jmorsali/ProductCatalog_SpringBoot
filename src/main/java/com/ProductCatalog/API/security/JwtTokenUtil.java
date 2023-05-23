@@ -19,7 +19,7 @@ public class JwtTokenUtil {
     private static String secret="PLQeuJWBgzw+duUMDuBIe7xpB4Fuh2YJ1k4PKTwEIszYjDr7PD+DPVhxB6R7xGK37ucVKpwzjcQrPLQeuJWBgzw+duUMDuBIe7xpB4Fuh2YJ1k4PKTwEIszYjDr7PD+DPVhxB6R7xGK37ucVKpwzjcQr";
 
     //@Value("${jwt.expiration}")
-    private static long expiration=60000;
+    private static long expiration=600000;
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
