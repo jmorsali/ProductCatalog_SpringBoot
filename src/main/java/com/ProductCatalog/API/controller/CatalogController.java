@@ -5,8 +5,11 @@ import com.ProductCatalog.API.dtos.ProductDto;
 import com.ProductCatalog.API.dtos.requests.CatalogSearchRequest;
 import com.ProductCatalog.API.dtos.response.CatalogResponse;
 import com.ProductCatalog.API.dtos.response.CatalogsResponse;
+import com.ProductCatalog.API.security.JwtTokenUtil;
 import com.ProductCatalog.API.services.ICatalogService;
+import com.ProductCatalog.API.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +20,6 @@ import java.util.List;
 public class CatalogController {
 
     private final ICatalogService catalogService;
-
     @Autowired
     public CatalogController(ICatalogService catalogService) {
         this.catalogService = catalogService;
@@ -25,6 +27,7 @@ public class CatalogController {
 
     @PostMapping("search")
     public ResponseEntity<CatalogsResponse> searchCatalog(@RequestBody CatalogSearchRequest request) {
+
         var catalogs = catalogService.searchCatalog(request);
         var response = new CatalogsResponse();
         response.setCatalogs(catalogs);

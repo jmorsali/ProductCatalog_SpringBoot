@@ -5,6 +5,7 @@ import com.ProductCatalog.API.dtos.requests.ProductSearchRequest;
 import com.ProductCatalog.API.entities.Product;
 import com.ProductCatalog.API.mappers.ProductMapper;
 import com.ProductCatalog.API.repositories.ProductRepository;
+import com.ProductCatalog.API.security.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +14,13 @@ import java.util.List;
 @Service
 public class ProductService implements IProductService {
     private final ProductRepository productRepository;
-
-    @Autowired
+        @Autowired
     public ProductService(ProductRepository productRepository) {
 
         this.productRepository = productRepository;
     }
 
-    @Override
+        @Override
     public List<ProductDto> getAllProducts() {
           return ProductMapper.ToProductDto(
                 productRepository.findAll()
