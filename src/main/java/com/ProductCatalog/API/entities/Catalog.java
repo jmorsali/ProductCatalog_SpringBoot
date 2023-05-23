@@ -14,9 +14,9 @@ public class Catalog {
     Integer catalogId;
     String catalogName;
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "product_category",
+    @JoinTable(name = "product_catalog",
             joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
+            inverseJoinColumns = @JoinColumn(name = "catalog_id"))
     private List<Product> products = new ArrayList<>();
 
     public List<Product> getProducts() {
