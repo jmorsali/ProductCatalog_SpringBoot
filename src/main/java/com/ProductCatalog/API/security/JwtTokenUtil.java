@@ -21,7 +21,7 @@ public class JwtTokenUtil {
     //@Value("${jwt.expiration}")
     private static final long expiration = 1000 * 60 * 60 * 2;//2 hours
 
-    public String generateToken(UserDetails userDetails) {
+    public static String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         return Jwts.builder()
                 .setClaims(claims)

@@ -38,6 +38,4 @@ public class ProductServiceTest {
         Assert.assertEquals("Product 1", result.get(0).getName());
         Assert.assertEquals("Product 2", result.get(1).getName());
     }
-
-    // Write similar tests for other methods (getProductById, createProduct, updateProduct, deleteProduct)
 }

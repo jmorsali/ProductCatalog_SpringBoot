@@ -26,21 +26,19 @@ public class ProductControllerIntegrationTest {
     private int port;
 
     private String getBaseUrl() {
-        return "http://localhost:" + port + "/products";
+        return "http://localhost:" + port + "/api/v1/products/search";
     }
 
     @Test
     public void testGetAllProducts() {
-        productRepository.save(new Product(1L, "Product 1", "Description 1", 9.99));
-        productRepository.save(new Product(2L, "Product 2", "Description 2", 19.99));
+        productRepository.save(new Product(10L, "Product 1", "Description 1", 9.99));
+        productRepository.save(new Product(20L, "Product 2", "Description 2", 19.99));
 
-        ResponseEntity<Product[]> response = restTemplate.getForEntity(getBaseUrl(), Product[].class);
+        ResponseEntity<Product[]> response = restTemplate.postForEntity(getBaseUrl(),"\"{  \\\"name\\\":\\\"cat\\\"}\"", Product[].class);
 
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assert.assertEquals(2, response.getBody().length);
         Assert.assertEquals("Product 1", response.getBody()[0].getName());
         Assert.assertEquals("Product 2", response.getBody()[1].getName());
     }
-
-    // Write similar tests for other endpoints (getProductById, createProduct, updateProduct, deleteProduct)
 }

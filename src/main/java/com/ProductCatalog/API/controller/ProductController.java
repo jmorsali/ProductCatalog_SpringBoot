@@ -19,7 +19,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping
+    @GetMapping("search")
     public List<ProductDto> searchAllProducts() {
         return productService.getAllProducts();
     }
