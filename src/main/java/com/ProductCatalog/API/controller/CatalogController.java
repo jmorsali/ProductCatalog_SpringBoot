@@ -34,7 +34,7 @@ public class CatalogController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("{Id}")
+    @GetMapping("{Id}")
     public ResponseEntity<CatalogResponse> getCatalog(@PathVariable long Id) {
         var catalog = catalogService.getCatalogById(Id);
         var response = new CatalogResponse();

@@ -16,10 +16,10 @@ import java.util.function.Function;
 public class JwtTokenUtil {
 
     //@Value("${jwt.secret}")
-    private static String secret="PLQeuJWBgzw+duUMDuBIe7xpB4Fuh2YJ1k4PKTwEIszYjDr7PD+DPVhxB6R7xGK37ucVKpwzjcQrPLQeuJWBgzw+duUMDuBIe7xpB4Fuh2YJ1k4PKTwEIszYjDr7PD+DPVhxB6R7xGK37ucVKpwzjcQr";
+    private static final String secret = "PLQeuJWBgzw+duUMDuBIe7xpB4Fuh2YJ1k4PKTwEIszYjDr7PD+DPVhxB6R7xGK37ucVKpwzjcQrPLQeuJWBgzw+duUMDuBIe7xpB4Fuh2YJ1k4PKTwEIszYjDr7PD+DPVhxB6R7xGK37ucVKpwzjcQr";
 
     //@Value("${jwt.expiration}")
-    private static long expiration=600000;
+    private static final long expiration = 1000 * 60 * 60 * 2;//2 hours
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
